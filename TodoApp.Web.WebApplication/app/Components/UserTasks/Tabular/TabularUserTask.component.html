@@ -1,0 +1,38 @@
+﻿
+<loader [hidden]="!isProcessing"></loader> 
+<div *ngIf="!isProcessing">
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Task Name</th>
+                <th>Owner</th>
+                <th>Task Date/Time</th>
+                <th># of Actions</th>
+                <th>Status</th>
+                <th>Assigned To</th>
+                <th>Project</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let userTask of userTasks;let i=index">
+                <th>{{userTask.Title}}</th>
+                <th>{{userTask.Owner}}</th>
+                <th>{{userTask.StartDateString}} : {{userTask.StartDateTime}}</th>
+                <th>0</th>
+                <th>{{userTask.statusesVM}}</th>
+                <th>{{userTask.AssignedTo}}</th>
+                <th>{{userTask.CategoryName}}</th>
+                <th>
+                    <a style="cursor:pointer;" (click)="editUserTask(userTask,i);">Edit</a>
+                    <a style="cursor:pointer;" (click)="deleteUserTask(userTask,i);">Delete</a>
+                </th>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="8"></td>
+            </tr>
+        </tfoot>
+    </table>
+</div> 

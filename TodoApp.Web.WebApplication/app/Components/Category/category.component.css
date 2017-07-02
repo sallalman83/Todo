@@ -1,0 +1,8 @@
+﻿
+.error-panel {
+    display: block;
+}
+
+    .error-panel p {
+        color: red;
+    }

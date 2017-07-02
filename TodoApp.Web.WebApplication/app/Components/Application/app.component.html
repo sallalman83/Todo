@@ -1,0 +1,47 @@
+﻿<todo-header *ngIf="isAuthenticated"></todo-header>
+<todo-quick-add></todo-quick-add>
+<div class="container body-content">
+
+    <div class="row">
+        <div class="col-md-4" *ngIf="isAuthenticated">
+            <div class="side-left">
+                <div>
+                    <ul class="side-task-menu">
+                        <li><a><i class="fa fa-inbox" aria-hidden="true"></i><span class="r5">Tabluar View</span></a></li>
+                        <li><a><i class="fa fa-calendar" aria-hidden="true"></i><span class="r5">Today</span><span class="label label-danger">3</span></a></li>
+                        <li><a><i class="fa fa-calendar-plus-o" aria-hidden="true"></i><span class="r5">Next 7 days</span><span class="label label-danger">4</span></a></li>
+                    </ul>
+                </div>
+                <hr />
+                <div id="pnlSideMenuTabs">
+                    <ul class="nav nav-pills">
+                        <li class="active"><a href="#Projects" data-toggle="tab">Projects</a></li>
+                        <li><a href="#Labels" data-toggle="tab">Labels</a></li>
+                        <li><a href="#Filters" data-toggle="tab">Filters</a></li>
+                    </ul>
+                    <div class="tab-content clearfix">
+                        <div class="tab-pane active" id="Projects">
+                            <categories></categories>
+                        </div>
+
+                        <div class="tab-pane" id="Labels">Labels</div>
+                        <div class="tab-pane" id="Filters">Filters</div>
+                    </div>
+                    <hr />
+                    <div>
+                        <a>Archived projects</a>
+                        <a>Hide Archived</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div [class]="cssMainClass">
+            <router-outlet (onAuthentication)="onAuthentication($event)"></router-outlet>
+        </div>
+    </div>
+
+    <hr />
+    <footer>
+        <p>&copy; 2017 - TODO Application, Developed By: Osama Al-Sallal</p>
+    </footer>
+</div>

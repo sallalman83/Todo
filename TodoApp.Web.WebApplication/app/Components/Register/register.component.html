@@ -1,0 +1,55 @@
+﻿<div id="fullscreen_bg" class="fullscreen_bg"></div>
+<div class="container">
+    <form [formGroup]="ngRegisterForm" class="form-signin" (keyup.enter)="submit();">
+        <h1 class="form-signin-heading text-muted">New User Registration</h1>
+        <input required type="text" class="form-control" placeholder="Username" autofocus="" id="userName" [(ngModel)]="registerViewModel.UserName" formControlName="userName" />
+        <div *ngIf="ngRegisterForm.controls['userName'].hasError('required') && initialized" class="error-panel">
+            <p><i class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;Username is required...</p>
+        </div>
+        <div class="error-panel" *ngIf="ngRegisterForm.controls['userName'].hasError('isValidCaharacter') && initialized">
+            <p><i class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;Invalid userName, Please use alphanumberic characters only</p>
+        </div>
+        <div class="error-panel" *ngIf="ngRegisterForm.controls['userName'].hasError('userNameExists')">
+            <p><i class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;Username already exists</p>
+        </div>
+        <br />
+        <input required type="password" class="form-control" placeholder="Password" [(ngModel)]="registerViewModel.Password" formControlName="password" />
+        <div *ngIf="ngRegisterForm.controls['password'].hasError('required') && initialized" class="error-panel">
+            <p><i class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;Password is required...</p>
+        </div>
+        <div class="error-panel" *ngIf="ngRegisterForm.controls['password'].hasError('passwordCompare')">
+            <p><i class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;Password dismatch</p>
+        </div>
+        <br />
+        <input required type="password" class="form-control" placeholder="Confirm Password" [(ngModel)]="registerViewModel.ConfirmPassword" formControlName="ConfirmPassword" />
+        <div *ngIf="ngRegisterForm.controls['ConfirmPassword'].hasError('required') && initialized" class="error-panel">
+            <p><i class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;Confirm Password is required...</p>
+        </div>
+        <div class="error-panel" *ngIf="ngRegisterForm.controls['ConfirmPassword'].hasError('passwordCompare')">
+            <p><i class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;Password dismatch</p>
+        </div>
+        <br />
+        <input required type="text" class="form-control" placeholder="Email Address" [(ngModel)]="registerViewModel.EmailAddress" formControlName="EmailAddress" />
+        <div *ngIf="ngRegisterForm.controls['EmailAddress'].hasError('required') && initialized" class="error-panel">
+            <p><i class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;Email Address is required...</p>
+        </div>
+        <div class="error-panel" *ngIf="ngRegisterForm.controls['EmailAddress'].hasError('isValidEmail')">
+            <p><i class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;Invalid Email address</p>
+        </div>
+        <br />
+        <div class="error-panel" *ngIf="invalidLogin">
+            <p><i class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;Sorry, Server error please try again later....</p>
+        </div>
+        <div *ngIf="registrationError" class="error-panel">
+            <p *ngFor="let error of errors;let i=index">
+                {{error}}
+            </p> 
+        </div>
+        <button type="button" class="btn btn-lg btn-primary btn-block" (click)="submit();" [hidden]="isProcessing">
+            Register
+        </button>
+        <a class="btn btn-lg btn-primary btn-block" [routerLink]="['/login']">
+            Back To Login
+        </a>
+    </form>
+</div>

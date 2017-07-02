@@ -1,0 +1,23 @@
+﻿<div id="fullscreen_bg" class="fullscreen_bg"></div>
+<div class="container">
+    <form [formGroup]="ngLoginForm" class="form-signin" (keyup.enter)="submit();">
+        <h1 class="form-signin-heading text-muted">Sign In</h1>
+        <input required type="text" class="form-control" placeholder="Username" id="userName" [(ngModel)]="loginViewModel.UserName" formControlName="userName" />
+        <div *ngIf="!ngLoginForm.controls['userName'].valid && initialized" class="error-panel">
+            <p><i class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;Username is required...</p>
+        </div>
+        <input required type="password" class="form-control" placeholder="Password"  [(ngModel)]="loginViewModel.Password" formControlName="password" />
+        <div *ngIf="!ngLoginForm.controls['password'].valid && initialized" class="error-panel">
+            <p><i class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;Password is required...</p>
+        </div>
+        <div class="error-panel" *ngIf="invalidLogin">
+            <p><i class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;Invalid Username/Password</p>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="button" (click)="submit();" [hidden]="isProcessing">
+            Sign In
+        </button>
+        <a class="btn btn-lg btn-primary btn-block" [routerLink]="['/RegisterUser']">
+            Register
+        </a>
+    </form>
+</div>

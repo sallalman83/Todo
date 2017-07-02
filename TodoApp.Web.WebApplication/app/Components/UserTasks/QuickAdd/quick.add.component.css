@@ -1,0 +1,12 @@
+﻿.date-picker input {
+    max-width: 280px;
+    background-color:red;
+}
+
+.error-panel {
+    display: block;
+}
+
+    .error-panel p {
+        color: red;
+    }

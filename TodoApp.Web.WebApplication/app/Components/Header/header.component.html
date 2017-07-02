@@ -1,0 +1,37 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" [routerLink]="['/home']">Todo Application</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><input type="text" placeholder="Search Tasks" maxlength="100" id="search" class="form-control search-input" /></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="menu-links"><i class="fa fa-bell" aria-hidden="true"></i></a>
+                </li>
+                <li>
+                    <a class="menu-links" data-toggle="modal" data-target="#quickAddTask"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></a>
+                </li>
+                <li>
+                    <a class="menu-links"><i class="fa fa-pie-chart" aria-hidden="true"></i></a>
+                </li>
+                <li>
+                    <a class="menu-links dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-gears" aria-hidden="true"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" [routerLink]="['/Sync']">Sync</a></li>
+                        <li><a href="#" [routerLink]="['/Settings']">Settings</a></li>
+                        <li><a href="#" [routerLink]="['/Logs']">View Activity Log</a></li>
+                        <li><a href="#" (click)="logoutUser();">Log out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

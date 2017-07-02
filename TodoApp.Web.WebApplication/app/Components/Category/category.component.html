@@ -1,0 +1,65 @@
+﻿
+<loader [hidden]="!isProcessing"></loader>
+<ul class="side-task-menu" [hidden]="isProcessing">
+    <li *ngFor="let project of userCategories;let i=index">
+        <a>
+            <div class="div_color counter_color icon-project" [style.background]="project.Color">&nbsp;</div>
+            <span>{{project.Name}}</span>
+        </a>
+    </li>
+    <li>
+        <a data-toggle="modal" data-target="#quickAddProject" class="red"><i class="fa fa-plus" aria-hidden="true"></i><span class="red">Add Project</span></a>
+    </li>
+</ul>
+<form [formGroup]="ngCategoryForm" class="form-signin" (keyup.enter)="submit();">
+    <!-- Quick Add Task Project -->
+    <div class="modal fade" id="quickAddProject" tabindex="-1" role="dialog" aria-labelledby="quickAddProject" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Quick Add Project</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="projectName">Name:</label>
+                            <div class="col-sm-9">
+                                <input type="text" [(ngModel)]="taskCategory.Name" required formControlName="Name" maxlength="1000" id="projectName" class="form-control" placeholder="Project Name like : Personal" />
+                                <div *ngIf="!ngCategoryForm.controls['Name'].valid && initialized" class="error-panel">
+                                    <p><i class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;Name is required...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="color">Color:</label>
+                            <div class="col-sm-9">
+                                <input type="text" [(ngModel)]="taskCategory.Color" formControlName="Color" maxlength="7" id="color" name="color" class="form-control" placeholder="#000000" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="archived">Is Archived:</label>
+                            <div class="col-sm-9">
+                                <input type="checkbox" [(ngModel)]="taskCategory.IsArchived" formControlName="IsArchived" id="archived" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="submit();">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

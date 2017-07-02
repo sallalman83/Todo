@@ -1,0 +1,183 @@
+﻿
+.tmp-ldr-bk {
+    background-size: cover;
+    background-position: 50% 50%; 
+    background-repeat: repeat;
+    text-align: center;
+    padding: 50px;
+    position:fixed;
+    top:0px;
+    left:0px;
+    height:100%;
+    width:100%;
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    /*max-width: 280px;*/
+}
+
+* {
+    font-family: Tahoma;
+}
+
+.search-input {
+    background-color: #fff;
+    margin-top: 10px;
+    color: #000;
+}
+
+    .search-input:focus {
+        width: 300px;
+        background-color: #fff;
+    }
+
+a.menu-links {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+icon-project {
+    content: "c";
+}
+
+[class^="icon-"]::before, [class*=" icon-"]::before {
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    text-transform: none;
+}
+
+.counter_color {
+    border-radius: 50px;
+    display: inline-block;
+    font-size: 16px;
+    height: 10px;
+    vertical-align: middle;
+    width: 10px;
+}
+
+body {
+    background-color: #FAFAFA;
+}
+
+.main-screen {
+    background-color: #fff;
+    min-height: 500px;
+}
+
+ul.side-task-menu {
+    margin: 0;
+    padding: 0;
+}
+
+    ul.side-task-menu li {
+        list-style-type: none;
+        margin-bottom: 5px;
+        padding: 5px;
+    }
+
+        ul.side-task-menu li:hover {
+            background-color: #EAEAEA;
+        }
+
+        ul.side-task-menu li a {
+            text-decoration: none;
+            color: #5C5C5C;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+            ul.side-task-menu li a span {
+            }
+
+            ul.side-task-menu li a i {
+                margin-right: 5px;
+            }
+
+.r5 {
+    margin-right: 5px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.red {
+    color: #D9534F;
+}
+
+.modal-header {
+    background-color: #428bca;
+    color: #fff;
+}
+
+    .modal-header .close {
+        margin-top: -15px;
+    }
+
+.nav-pills {
+    border-bottom: 1px solid #428bca;
+}
+
+    .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+        outline: none;
+    }
+
+    .nav-pills > li > a {
+        border-radius: 0px !important;
+    }
+
+.side-left {
+    margin-top: 30px;
+}
+
+.navbar-inverse {
+    background-color: #428BCA;
+    color: #000;
+}
+
+    .navbar-inverse .navbar-brand {
+        color: #fff;
+    }
+
+    .navbar-inverse .navbar-nav > li > a {
+        color: #000;
+    }
+
+    .navbar-inverse .navbar-toggle {
+        border-color: #fff;
+    }
+
+.dropdown-menu > li > a {
+    color: #000;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+    color: #000;
+}
+
+hr {
+    margin-top: 0px;
+}
