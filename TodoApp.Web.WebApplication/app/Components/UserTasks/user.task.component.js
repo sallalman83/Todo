@@ -8,7 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var login_service_1 = require("../../services/Login/login.service");
 var router_1 = require("@angular/router");
@@ -28,15 +27,15 @@ var UserTaskComponent = (function () {
                 _this.router.navigate(['login']);
         });
     };
+    UserTaskComponent = __decorate([
+        core_1.Component({
+            //selector: "todo-app",
+            templateUrl: '../app/Components/UserTasks/user.task.component.html',
+            providers: [login_service_1.LoginService]
+        }), 
+        __metadata('design:paramtypes', [login_service_1.LoginService, router_1.Router])
+    ], UserTaskComponent);
     return UserTaskComponent;
 }());
-UserTaskComponent = __decorate([
-    core_1.Component({
-        //selector: "todo-app",
-        templateUrl: '../app/Components/UserTasks/user.task.component.html',
-        providers: [login_service_1.LoginService]
-    }),
-    __metadata("design:paramtypes", [login_service_1.LoginService, router_1.Router])
-], UserTaskComponent);
 exports.UserTaskComponent = UserTaskComponent;
 //# sourceMappingURL=user.task.component.js.map

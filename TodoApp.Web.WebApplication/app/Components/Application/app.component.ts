@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
             this.isAuthenticated = x;
             this.updateCssClass();
         });
-    }
+    } 
 
     updateCssClass(): void {
         if (this.isAuthenticated)

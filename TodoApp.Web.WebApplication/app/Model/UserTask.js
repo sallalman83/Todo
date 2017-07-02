@@ -1,5 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 var enum_1 = require("../Shared/enum");
 var UserTaskViewModel = (function () {
     function UserTaskViewModel() {

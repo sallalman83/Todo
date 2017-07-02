@@ -8,14 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-require("rxjs/Rx");
+require('rxjs/Rx');
 var settings_1 = require("../../Shared/settings");
-var core_1 = require("@angular/core");
-var Observable_1 = require("rxjs/Observable");
-var http_1 = require("@angular/http");
+var core_1 = require('@angular/core');
+var Observable_1 = require('rxjs/Observable');
+var http_1 = require('@angular/http');
 var jsonRequestOptions_1 = require("../../Shared/jsonRequestOptions");
-var LoginService = LoginService_1 = (function () {
+var LoginService = (function () {
     function LoginService(_http) {
         this._http = _http;
     }
@@ -25,7 +24,7 @@ var LoginService = LoginService_1 = (function () {
         return this._http.get(url, jsonRequestOptions)
             .map(function (response) {
             var _result = response.json();
-            LoginService_1.onAuthentication.emit(_result.Result);
+            LoginService.onAuthentication.emit(_result.Result);
             return _result;
         })
             .catch(this.handleServerError);
@@ -37,7 +36,7 @@ var LoginService = LoginService_1 = (function () {
             .map(function (response) {
             var _result = response.json();
             if (typeof (_result.error) == "undefined")
-                LoginService_1.onAuthentication.emit(true);
+                LoginService.onAuthentication.emit(true);
             return _result;
         })
             .catch(this.handleServerError);
@@ -61,7 +60,7 @@ var LoginService = LoginService_1 = (function () {
         var url = settings_1.settings.serverURL + '/api/User/Logout';
         localStorage.setItem("access_token", "");
         localStorage.setItem("token_type", "");
-        LoginService_1.onAuthentication.emit(false);
+        LoginService.onAuthentication.emit(false);
         return this._http.post(url, jsonRequestOptions)
             .map(function (response) { return response.json(); })
             .catch(this.handleServerError);
@@ -69,17 +68,16 @@ var LoginService = LoginService_1 = (function () {
     LoginService.prototype.handleServerError = function (error) {
         return Observable_1.Observable.throw(error.json().error);
     };
+    LoginService.onAuthentication = new core_1.EventEmitter();
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], LoginService, "onAuthentication", void 0);
+    LoginService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http])
+    ], LoginService);
     return LoginService;
 }());
-LoginService.onAuthentication = new core_1.EventEmitter();
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", Object)
-], LoginService, "onAuthentication", void 0);
-LoginService = LoginService_1 = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], LoginService);
 exports.LoginService = LoginService;
-var LoginService_1;
 //# sourceMappingURL=login.service.js.map

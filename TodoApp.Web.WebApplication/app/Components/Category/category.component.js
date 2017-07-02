@@ -8,9 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var category_service_1 = require("../../Services/Category/category.service");
+var category_service_1 = require('../../Services/Category/category.service');
 var TaskCategory_1 = require("../../Model/TaskCategory");
 var forms_1 = require("@angular/forms");
 var CategoryComponent = (function () {
@@ -59,15 +58,15 @@ var CategoryComponent = (function () {
             }
         });
     };
+    CategoryComponent = __decorate([
+        core_1.Component({
+            selector: "categories",
+            templateUrl: '../app/Components/Category/category.component.html',
+            styleUrls: ['../app/Components/Category/category.component.css']
+        }), 
+        __metadata('design:paramtypes', [category_service_1.CategoryService, forms_1.FormBuilder])
+    ], CategoryComponent);
     return CategoryComponent;
 }());
-CategoryComponent = __decorate([
-    core_1.Component({
-        selector: "categories",
-        templateUrl: '../app/Components/Category/category.component.html',
-        styleUrls: ['../app/Components/Category/category.component.css']
-    }),
-    __metadata("design:paramtypes", [category_service_1.CategoryService, forms_1.FormBuilder])
-], CategoryComponent);
 exports.CategoryComponent = CategoryComponent;
 //# sourceMappingURL=category.component.js.map

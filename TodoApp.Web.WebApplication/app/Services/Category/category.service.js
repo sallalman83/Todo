@@ -8,12 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-require("rxjs/Rx");
+require('rxjs/Rx');
 var settings_1 = require("../../Shared/settings");
-var core_1 = require("@angular/core");
-var Observable_1 = require("rxjs/Observable");
-var http_1 = require("@angular/http");
+var core_1 = require('@angular/core');
+var Observable_1 = require('rxjs/Observable');
+var http_1 = require('@angular/http');
 var jsonRequestOptions_1 = require("../../Shared/jsonRequestOptions");
 var CategoryService = (function () {
     function CategoryService(_http) {
@@ -36,11 +35,11 @@ var CategoryService = (function () {
     CategoryService.prototype.handleServerError = function (error) {
         return Observable_1.Observable.throw(error.json().error);
     };
+    CategoryService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http])
+    ], CategoryService);
     return CategoryService;
 }());
-CategoryService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], CategoryService);
 exports.CategoryService = CategoryService;
 //# sourceMappingURL=category.service.js.map

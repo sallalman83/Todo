@@ -8,12 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var UserTask_1 = require("../../../Model/UserTask");
 var forms_1 = require("@angular/forms");
-var user_task_service_1 = require("../../../Services/UserTask/user.task.service");
+var user_task_service_1 = require('../../../Services/UserTask/user.task.service');
 var UserTaskQuickAddComponent = (function () {
     function UserTaskQuickAddComponent(router, fb, tasksService) {
         this.router = router;
@@ -64,15 +63,15 @@ var UserTaskQuickAddComponent = (function () {
             });
         }
     };
+    UserTaskQuickAddComponent = __decorate([
+        core_1.Component({
+            selector: "todo-quick-add",
+            templateUrl: '../app/Components/UserTasks/QuickAdd/quick.add.component.html',
+            styleUrls: ['../app/Components/UserTasks/QuickAdd/quick.add.component.css']
+        }), 
+        __metadata('design:paramtypes', [router_1.Router, forms_1.FormBuilder, user_task_service_1.TasksService])
+    ], UserTaskQuickAddComponent);
     return UserTaskQuickAddComponent;
 }());
-UserTaskQuickAddComponent = __decorate([
-    core_1.Component({
-        selector: "todo-quick-add",
-        templateUrl: '../app/Components/UserTasks/QuickAdd/quick.add.component.html',
-        styleUrls: ['../app/Components/UserTasks/QuickAdd/quick.add.component.css']
-    }),
-    __metadata("design:paramtypes", [router_1.Router, forms_1.FormBuilder, user_task_service_1.TasksService])
-], UserTaskQuickAddComponent);
 exports.UserTaskQuickAddComponent = UserTaskQuickAddComponent;
 //# sourceMappingURL=quick.add.component.js.map
