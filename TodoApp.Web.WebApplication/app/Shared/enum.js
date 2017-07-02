@@ -1,14 +1,15 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var DBOperation;
 (function (DBOperation) {
     DBOperation[DBOperation["create"] = 1] = "create";
     DBOperation[DBOperation["update"] = 2] = "update";
     DBOperation[DBOperation["delete"] = 3] = "delete";
-})(exports.DBOperation || (exports.DBOperation = {}));
-var DBOperation = exports.DBOperation;
+})(DBOperation = exports.DBOperation || (exports.DBOperation = {}));
+var UserTaskStatus;
 (function (UserTaskStatus) {
     UserTaskStatus[UserTaskStatus["create"] = 1] = "create";
     UserTaskStatus[UserTaskStatus["update"] = 2] = "update";
     UserTaskStatus[UserTaskStatus["delete"] = 3] = "delete";
-})(exports.UserTaskStatus || (exports.UserTaskStatus = {}));
-var UserTaskStatus = exports.UserTaskStatus;
+})(UserTaskStatus = exports.UserTaskStatus || (exports.UserTaskStatus = {}));
 //# sourceMappingURL=enum.js.map

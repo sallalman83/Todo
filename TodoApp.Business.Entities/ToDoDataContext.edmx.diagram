@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6acd93e79a904b8eb6008cafe33059a1" Name="Diagram1">
+        <EntityTypeShape EntityType="ToDoAppStoreModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoAppStoreModel.ApplicationRole" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoAppStoreModel.ApplicationUserClaim" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoAppStoreModel.ApplicationUserLogin" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoAppStoreModel.ApplicationUser" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoAppStoreModel.Audit" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoAppStoreModel.EmailNotificationSetting" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoAppStoreModel.MediaFile" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoAppStoreModel.Notification" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoAppStoreModel.Preference" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoAppStoreModel.PushNotificationSetting" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoAppStoreModel.Tag" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoAppStoreModel.TaskCategory" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoAppStoreModel.UserTaskCollaborator" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoAppStoreModel.UserTaskComment" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoAppStoreModel.UserTaskInTag" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ToDoAppStoreModel.UserTask" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="ToDoAppStoreModel.FK_dbo_ApplicationUserClaims_dbo_ApplicationUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="ToDoAppStoreModel.FK_dbo_ApplicationUserLogins_dbo_ApplicationUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="ToDoAppStoreModel.ApplicationUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

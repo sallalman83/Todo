@@ -1,5 +1,5 @@
 ﻿/// <autosync enabled="true" />
-/// <reference path="bootstrap.js" />
+/// <reference path="bootstrap.min.js" />
 /// <reference path="colorpicker.js" />
 /// <reference path="eye.js" />
 /// <reference path="jquery.js" />

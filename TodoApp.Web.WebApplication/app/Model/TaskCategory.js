@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var TaskCategoryViewModel = (function () {
     function TaskCategoryViewModel() {
         this.OrderId = 0;

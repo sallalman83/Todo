@@ -8,10 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
-var login_service_1 = require('../../Services/Login/login.service');
+var login_service_1 = require("../../Services/Login/login.service");
 var RegisterUserViewModel_1 = require("../../Model/RegisterUserViewModel");
 var RegisterComponent = (function () {
     function RegisterComponent(loginService, fb, router) {
@@ -114,15 +115,16 @@ var RegisterComponent = (function () {
             });
         }
     };
-    RegisterComponent = __decorate([
-        core_1.Component({
-            selector: "register-user",
-            templateUrl: '../app/Components/Register/register.component.html',
-            styleUrls: ['../app/Components/Register/register.component.css']
-        }), 
-        __metadata('design:paramtypes', [login_service_1.LoginService, forms_1.FormBuilder, router_1.Router])
-    ], RegisterComponent);
     return RegisterComponent;
 }());
+RegisterComponent = __decorate([
+    core_1.Component({
+        selector: "register-user",
+        templateUrl: '../app/Components/Register/register.component.html',
+        styleUrls: ['../app/Components/Register/register.component.css']
+    }),
+    __metadata("design:paramtypes", [login_service_1.LoginService, forms_1.FormBuilder,
+        router_1.Router])
+], RegisterComponent);
 exports.RegisterComponent = RegisterComponent;
 //# sourceMappingURL=register.component.js.map

@@ -8,12 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
-var login_service_1 = require('../../Services/Login/login.service');
+var login_service_1 = require("../../Services/Login/login.service");
 var LoginViewModel_1 = require("../../Model/LoginViewModel");
-var LoginComponent = (function () {
+var LoginComponent = LoginComponent_1 = (function () {
     function LoginComponent(loginService, fb, router) {
         this.loginService = loginService;
         this.router = router;
@@ -48,7 +49,7 @@ var LoginComponent = (function () {
                     localStorage.setItem("access_token", _result.access_token);
                     localStorage.setItem("token_type", _result.token_type);
                     localStorage.setItem("userName", _result.userName);
-                    LoginComponent.onAuthentication.emit(true);
+                    LoginComponent_1.onAuthentication.emit(true);
                     _this.router.navigate(['home']);
                 }
             }, function (e) {
@@ -56,19 +57,21 @@ var LoginComponent = (function () {
             });
         }
     };
-    LoginComponent.onAuthentication = new core_1.EventEmitter();
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', Object)
-    ], LoginComponent, "onAuthentication", void 0);
-    LoginComponent = __decorate([
-        core_1.Component({
-            templateUrl: '../app/Components/Login/login.component.html',
-            styleUrls: ['../app/Components/Login/login.component.css']
-        }), 
-        __metadata('design:paramtypes', [login_service_1.LoginService, forms_1.FormBuilder, router_1.Router])
-    ], LoginComponent);
     return LoginComponent;
 }());
+LoginComponent.onAuthentication = new core_1.EventEmitter();
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], LoginComponent, "onAuthentication", void 0);
+LoginComponent = LoginComponent_1 = __decorate([
+    core_1.Component({
+        templateUrl: '../app/Components/Login/login.component.html',
+        styleUrls: ['../app/Components/Login/login.component.css']
+    }),
+    __metadata("design:paramtypes", [login_service_1.LoginService, forms_1.FormBuilder,
+        router_1.Router])
+], LoginComponent);
 exports.LoginComponent = LoginComponent;
+var LoginComponent_1;
 //# sourceMappingURL=login.component.js.map

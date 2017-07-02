@@ -1,0 +1,991 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ToDoAppStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ApplicationUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationUserRoles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Audits">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateByUserId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="LastUpdateByUserId" Type="int" />
+        </EntityType>
+        <EntityType Name="EmailNotificationSettings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateByUserId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="LastUpdateByUserId" Type="int" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="WebNotification" Type="bit" Nullable="false" />
+          <Property Name="CommentsAttachedToMe" Type="bit" Nullable="false" />
+          <Property Name="TasksAssignedToMe" Type="bit" Nullable="false" />
+          <Property Name="TasksCompleted" Type="bit" Nullable="false" />
+          <Property Name="TasksUncompleted" Type="bit" Nullable="false" />
+          <Property Name="CollaboratorJoinedProject" Type="bit" Nullable="false" />
+          <Property Name="CollaboratorDeclinedInvitationToProject" Type="bit" Nullable="false" />
+          <Property Name="CollaboratorLeftProject" Type="bit" Nullable="false" />
+          <Property Name="CollaboratorRemovedFromProject" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MediaFiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateByUserId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="LastUpdateByUserId" Type="int" />
+          <Property Name="FileLocation" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="FileEnumTypeId" Type="int" Nullable="false" />
+          <Property Name="Approved" Type="bit" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notifications">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateByUserId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="LastUpdateByUserId" Type="int" />
+        </EntityType>
+        <EntityType Name="Preferences">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateByUserId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="LastUpdateByUserId" Type="int" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+          <Property Name="StartPageEnumTypeId" Type="int" Nullable="false" />
+          <Property Name="StartPageId" Type="bigint" />
+          <Property Name="ThemeTypeId" Type="int" Nullable="false" />
+          <Property Name="DateFormatTypeId" Type="int" Nullable="false" />
+          <Property Name="TimeFormatTypeId" Type="int" Nullable="false" />
+          <Property Name="TimeZoneTypeId" Type="int" Nullable="false" />
+          <Property Name="StartOfWeekTypeId" Type="int" Nullable="false" />
+          <Property Name="DailyDigestTypeId" Type="bit" Nullable="false" />
+          <Property Name="NewsLetterTypeId" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PushNotificationSettings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateByUserId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="LastUpdateByUserId" Type="int" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="WebNotification" Type="bit" Nullable="false" />
+          <Property Name="CommentsAttachedToMe" Type="bit" Nullable="false" />
+          <Property Name="TasksAssignedToMe" Type="bit" Nullable="false" />
+          <Property Name="TasksCompleted" Type="bit" Nullable="false" />
+          <Property Name="TasksUncompleted" Type="bit" Nullable="false" />
+          <Property Name="CollaboratorJoinedProject" Type="bit" Nullable="false" />
+          <Property Name="CollaboratorDeclinedInvitationToProject" Type="bit" Nullable="false" />
+          <Property Name="CollaboratorLeftProject" Type="bit" Nullable="false" />
+          <Property Name="CollaboratorRemovedFromProject" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tags">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateByUserId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="LastUpdateByUserId" Type="int" />
+          <Property Name="Tag" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TaskCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateByUserId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="LastUpdateByUserId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Color" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="IsArchived" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTaskCollaborators">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateByUserId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="LastUpdateByUserId" Type="int" />
+          <Property Name="UserTaskId" Type="bigint" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IsCreator" Type="bit" Nullable="false" />
+          <Property Name="PermissionEnumId" Type="int" Nullable="false" />
+          <Property Name="LastActionDate" Type="datetime" />
+          <Property Name="JoinDate" Type="datetime" />
+          <Property Name="Approved" Type="bit" />
+          <Property Name="DeleteDate" Type="datetime" />
+          <Property Name="DeleteByUserId" Type="int" />
+        </EntityType>
+        <EntityType Name="UserTaskComments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateByUserId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="LastUpdateByUserId" Type="int" />
+          <Property Name="UserTaskId" Type="bigint" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RootUserTaskCommentId" Type="bigint" />
+          <Property Name="MediaFileId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="UserTaskInTags">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateByUserId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="LastUpdateByUserId" Type="int" />
+          <Property Name="UserTaskId" Type="bigint" Nullable="false" />
+          <Property Name="TagId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTasks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateByUserId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="LastUpdateByUserId" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="2000" Nullable="false" />
+          <Property Name="TitleHashCode" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="TaskEnumStatusId" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="PriorityEnumId" Type="int" Nullable="false" />
+          <Property Name="TaskCategoryId" Type="bigint" />
+          <Property Name="MediaFileId" Type="bigint" />
+          <Property Name="IsArchived" Type="bit" Nullable="false" />
+          <Property Name="AssignedTo" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK_dbo_ApplicationUserClaims_dbo_ApplicationUsers_UserId">
+          <End Role="ApplicationUsers" Type="Self.ApplicationUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ApplicationUserClaims" Type="Self.ApplicationUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicationUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ApplicationUserLogins_dbo_ApplicationUsers_UserId">
+          <End Role="ApplicationUsers" Type="Self.ApplicationUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ApplicationUserLogins" Type="Self.ApplicationUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicationUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ApplicationUserRoles_dbo_ApplicationRoles_RoleId">
+          <End Role="ApplicationRoles" Type="Self.ApplicationRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ApplicationUserRoles" Type="Self.ApplicationUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicationUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ApplicationUserRoles_dbo_ApplicationUsers_UserId">
+          <End Role="ApplicationUsers" Type="Self.ApplicationUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ApplicationUserRoles" Type="Self.ApplicationUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicationUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ToDoAppStoreModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationRoles" EntityType="Self.ApplicationRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationUserClaims" EntityType="Self.ApplicationUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationUserLogins" EntityType="Self.ApplicationUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationUserRoles" EntityType="Self.ApplicationUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationUsers" EntityType="Self.ApplicationUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Audits" EntityType="Self.Audits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailNotificationSettings" EntityType="Self.EmailNotificationSettings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MediaFiles" EntityType="Self.MediaFiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Preferences" EntityType="Self.Preferences" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PushNotificationSettings" EntityType="Self.PushNotificationSettings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaskCategories" EntityType="Self.TaskCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTaskCollaborators" EntityType="Self.UserTaskCollaborators" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTaskComments" EntityType="Self.UserTaskComments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTaskInTags" EntityType="Self.UserTaskInTags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTasks" EntityType="Self.UserTasks" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_ApplicationUserClaims_dbo_ApplicationUsers_UserId" Association="Self.FK_dbo_ApplicationUserClaims_dbo_ApplicationUsers_UserId">
+            <End Role="ApplicationUsers" EntitySet="ApplicationUsers" />
+            <End Role="ApplicationUserClaims" EntitySet="ApplicationUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ApplicationUserLogins_dbo_ApplicationUsers_UserId" Association="Self.FK_dbo_ApplicationUserLogins_dbo_ApplicationUsers_UserId">
+            <End Role="ApplicationUsers" EntitySet="ApplicationUsers" />
+            <End Role="ApplicationUserLogins" EntitySet="ApplicationUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ApplicationUserRoles_dbo_ApplicationRoles_RoleId" Association="Self.FK_dbo_ApplicationUserRoles_dbo_ApplicationRoles_RoleId">
+            <End Role="ApplicationRoles" EntitySet="ApplicationRoles" />
+            <End Role="ApplicationUserRoles" EntitySet="ApplicationUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ApplicationUserRoles_dbo_ApplicationUsers_UserId" Association="Self.FK_dbo_ApplicationUserRoles_dbo_ApplicationUsers_UserId">
+            <End Role="ApplicationUsers" EntitySet="ApplicationUsers" />
+            <End Role="ApplicationUserRoles" EntitySet="ApplicationUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ToDoAppStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ApplicationUsers" Relationship="Self.ApplicationUserRoles" FromRole="ApplicationRoles" ToRole="ApplicationUsers" />
+        </EntityType>
+        <EntityType Name="ApplicationUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ApplicationUser" Relationship="Self.FK_dbo_ApplicationUserClaims_dbo_ApplicationUsers_UserId" FromRole="ApplicationUserClaims" ToRole="ApplicationUsers" />
+        </EntityType>
+        <EntityType Name="ApplicationUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ApplicationUser" Relationship="Self.FK_dbo_ApplicationUserLogins_dbo_ApplicationUsers_UserId" FromRole="ApplicationUserLogins" ToRole="ApplicationUsers" />
+        </EntityType>
+        <EntityType Name="ApplicationUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ApplicationUserClaims" Relationship="Self.FK_dbo_ApplicationUserClaims_dbo_ApplicationUsers_UserId" FromRole="ApplicationUsers" ToRole="ApplicationUserClaims" />
+          <NavigationProperty Name="ApplicationUserLogins" Relationship="Self.FK_dbo_ApplicationUserLogins_dbo_ApplicationUsers_UserId" FromRole="ApplicationUsers" ToRole="ApplicationUserLogins" />
+          <NavigationProperty Name="ApplicationRoles" Relationship="Self.ApplicationUserRoles" FromRole="ApplicationUsers" ToRole="ApplicationRoles" />
+        </EntityType>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateByUserId" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateByUserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="EmailNotificationSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateByUserId" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateByUserId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="WebNotification" Type="Boolean" Nullable="false" />
+          <Property Name="CommentsAttachedToMe" Type="Boolean" Nullable="false" />
+          <Property Name="TasksAssignedToMe" Type="Boolean" Nullable="false" />
+          <Property Name="TasksCompleted" Type="Boolean" Nullable="false" />
+          <Property Name="TasksUncompleted" Type="Boolean" Nullable="false" />
+          <Property Name="CollaboratorJoinedProject" Type="Boolean" Nullable="false" />
+          <Property Name="CollaboratorDeclinedInvitationToProject" Type="Boolean" Nullable="false" />
+          <Property Name="CollaboratorLeftProject" Type="Boolean" Nullable="false" />
+          <Property Name="CollaboratorRemovedFromProject" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MediaFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateByUserId" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateByUserId" Type="Int32" />
+          <Property Name="FileLocation" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileEnumTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Approved" Type="Boolean" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateByUserId" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateByUserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Preference">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateByUserId" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateByUserId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageId" Type="Int32" Nullable="false" />
+          <Property Name="StartPageEnumTypeId" Type="Int32" Nullable="false" />
+          <Property Name="StartPageId" Type="Int64" />
+          <Property Name="ThemeTypeId" Type="Int32" Nullable="false" />
+          <Property Name="DateFormatTypeId" Type="Int32" Nullable="false" />
+          <Property Name="TimeFormatTypeId" Type="Int32" Nullable="false" />
+          <Property Name="TimeZoneTypeId" Type="Int32" Nullable="false" />
+          <Property Name="StartOfWeekTypeId" Type="Int32" Nullable="false" />
+          <Property Name="DailyDigestTypeId" Type="Boolean" Nullable="false" />
+          <Property Name="NewsLetterTypeId" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PushNotificationSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateByUserId" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateByUserId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="WebNotification" Type="Boolean" Nullable="false" />
+          <Property Name="CommentsAttachedToMe" Type="Boolean" Nullable="false" />
+          <Property Name="TasksAssignedToMe" Type="Boolean" Nullable="false" />
+          <Property Name="TasksCompleted" Type="Boolean" Nullable="false" />
+          <Property Name="TasksUncompleted" Type="Boolean" Nullable="false" />
+          <Property Name="CollaboratorJoinedProject" Type="Boolean" Nullable="false" />
+          <Property Name="CollaboratorDeclinedInvitationToProject" Type="Boolean" Nullable="false" />
+          <Property Name="CollaboratorLeftProject" Type="Boolean" Nullable="false" />
+          <Property Name="CollaboratorRemovedFromProject" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateByUserId" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateByUserId" Type="Int32" />
+          <Property Name="Tag1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TaskCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateByUserId" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateByUserId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="IsArchived" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTaskCollaborator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateByUserId" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateByUserId" Type="Int32" />
+          <Property Name="UserTaskId" Type="Int64" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="IsCreator" Type="Boolean" Nullable="false" />
+          <Property Name="PermissionEnumId" Type="Int32" Nullable="false" />
+          <Property Name="LastActionDate" Type="DateTime" Precision="3" />
+          <Property Name="JoinDate" Type="DateTime" Precision="3" />
+          <Property Name="Approved" Type="Boolean" />
+          <Property Name="DeleteDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleteByUserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserTaskComment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateByUserId" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateByUserId" Type="Int32" />
+          <Property Name="UserTaskId" Type="Int64" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RootUserTaskCommentId" Type="Int64" />
+          <Property Name="MediaFileId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="UserTaskInTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateByUserId" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateByUserId" Type="Int32" />
+          <Property Name="UserTaskId" Type="Int64" Nullable="false" />
+          <Property Name="TagId" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTask">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateByUserId" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateByUserId" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TitleHashCode" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TaskEnumStatusId" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="PriorityEnumId" Type="Int32" Nullable="false" />
+          <Property Name="TaskCategoryId" Type="Int64" />
+          <Property Name="MediaFileId" Type="Int64" />
+          <Property Name="IsArchived" Type="Boolean" Nullable="false" />
+          <Property Name="AssignedTo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_dbo_ApplicationUserClaims_dbo_ApplicationUsers_UserId">
+          <End Role="ApplicationUsers" Type="Self.ApplicationUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ApplicationUserClaims" Type="Self.ApplicationUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicationUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ApplicationUserLogins_dbo_ApplicationUsers_UserId">
+          <End Role="ApplicationUsers" Type="Self.ApplicationUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ApplicationUserLogins" Type="Self.ApplicationUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicationUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationUserRoles">
+          <End Role="ApplicationRoles" Type="Self.ApplicationRole" Multiplicity="*" />
+          <End Role="ApplicationUsers" Type="Self.ApplicationUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ToDoAppStoreEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="ApplicationRoles" EntityType="Self.ApplicationRole" />
+          <EntitySet Name="ApplicationUserClaims" EntityType="Self.ApplicationUserClaim" />
+          <EntitySet Name="ApplicationUserLogins" EntityType="Self.ApplicationUserLogin" />
+          <EntitySet Name="ApplicationUsers" EntityType="Self.ApplicationUser" />
+          <EntitySet Name="Audits" EntityType="Self.Audit" />
+          <EntitySet Name="EmailNotificationSettings" EntityType="Self.EmailNotificationSetting" />
+          <EntitySet Name="MediaFiles" EntityType="Self.MediaFile" />
+          <EntitySet Name="Notifications" EntityType="Self.Notification" />
+          <EntitySet Name="Preferences" EntityType="Self.Preference" />
+          <EntitySet Name="PushNotificationSettings" EntityType="Self.PushNotificationSetting" />
+          <EntitySet Name="Tags" EntityType="Self.Tag" />
+          <EntitySet Name="TaskCategories" EntityType="Self.TaskCategory" />
+          <EntitySet Name="UserTaskCollaborators" EntityType="Self.UserTaskCollaborator" />
+          <EntitySet Name="UserTaskComments" EntityType="Self.UserTaskComment" />
+          <EntitySet Name="UserTaskInTags" EntityType="Self.UserTaskInTag" />
+          <EntitySet Name="UserTasks" EntityType="Self.UserTask" />
+          <AssociationSet Name="FK_dbo_ApplicationUserClaims_dbo_ApplicationUsers_UserId" Association="Self.FK_dbo_ApplicationUserClaims_dbo_ApplicationUsers_UserId">
+            <End Role="ApplicationUsers" EntitySet="ApplicationUsers" />
+            <End Role="ApplicationUserClaims" EntitySet="ApplicationUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ApplicationUserLogins_dbo_ApplicationUsers_UserId" Association="Self.FK_dbo_ApplicationUserLogins_dbo_ApplicationUsers_UserId">
+            <End Role="ApplicationUsers" EntitySet="ApplicationUsers" />
+            <End Role="ApplicationUserLogins" EntitySet="ApplicationUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationUserRoles" Association="Self.ApplicationUserRoles">
+            <End Role="ApplicationRoles" EntitySet="ApplicationRoles" />
+            <End Role="ApplicationUsers" EntitySet="ApplicationUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ToDoAppStoreModelStoreContainer" CdmEntityContainer="ToDoAppStoreEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="ToDoAppStoreModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationRoles">
+            <EntityTypeMapping TypeName="ToDoAppStoreModel.ApplicationRole">
+              <MappingFragment StoreEntitySet="ApplicationRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationUserClaims">
+            <EntityTypeMapping TypeName="ToDoAppStoreModel.ApplicationUserClaim">
+              <MappingFragment StoreEntitySet="ApplicationUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationUserLogins">
+            <EntityTypeMapping TypeName="ToDoAppStoreModel.ApplicationUserLogin">
+              <MappingFragment StoreEntitySet="ApplicationUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationUsers">
+            <EntityTypeMapping TypeName="ToDoAppStoreModel.ApplicationUser">
+              <MappingFragment StoreEntitySet="ApplicationUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Audits">
+            <EntityTypeMapping TypeName="ToDoAppStoreModel.Audit">
+              <MappingFragment StoreEntitySet="Audits">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateByUserId" ColumnName="CreateByUserId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdateByUserId" ColumnName="LastUpdateByUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailNotificationSettings">
+            <EntityTypeMapping TypeName="ToDoAppStoreModel.EmailNotificationSetting">
+              <MappingFragment StoreEntitySet="EmailNotificationSettings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateByUserId" ColumnName="CreateByUserId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdateByUserId" ColumnName="LastUpdateByUserId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="WebNotification" ColumnName="WebNotification" />
+                <ScalarProperty Name="CommentsAttachedToMe" ColumnName="CommentsAttachedToMe" />
+                <ScalarProperty Name="TasksAssignedToMe" ColumnName="TasksAssignedToMe" />
+                <ScalarProperty Name="TasksCompleted" ColumnName="TasksCompleted" />
+                <ScalarProperty Name="TasksUncompleted" ColumnName="TasksUncompleted" />
+                <ScalarProperty Name="CollaboratorJoinedProject" ColumnName="CollaboratorJoinedProject" />
+                <ScalarProperty Name="CollaboratorDeclinedInvitationToProject" ColumnName="CollaboratorDeclinedInvitationToProject" />
+                <ScalarProperty Name="CollaboratorLeftProject" ColumnName="CollaboratorLeftProject" />
+                <ScalarProperty Name="CollaboratorRemovedFromProject" ColumnName="CollaboratorRemovedFromProject" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MediaFiles">
+            <EntityTypeMapping TypeName="ToDoAppStoreModel.MediaFile">
+              <MappingFragment StoreEntitySet="MediaFiles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateByUserId" ColumnName="CreateByUserId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdateByUserId" ColumnName="LastUpdateByUserId" />
+                <ScalarProperty Name="FileLocation" ColumnName="FileLocation" />
+                <ScalarProperty Name="FileEnumTypeId" ColumnName="FileEnumTypeId" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="ToDoAppStoreModel.Notification">
+              <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateByUserId" ColumnName="CreateByUserId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdateByUserId" ColumnName="LastUpdateByUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Preferences">
+            <EntityTypeMapping TypeName="ToDoAppStoreModel.Preference">
+              <MappingFragment StoreEntitySet="Preferences">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateByUserId" ColumnName="CreateByUserId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdateByUserId" ColumnName="LastUpdateByUserId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="StartPageEnumTypeId" ColumnName="StartPageEnumTypeId" />
+                <ScalarProperty Name="StartPageId" ColumnName="StartPageId" />
+                <ScalarProperty Name="ThemeTypeId" ColumnName="ThemeTypeId" />
+                <ScalarProperty Name="DateFormatTypeId" ColumnName="DateFormatTypeId" />
+                <ScalarProperty Name="TimeFormatTypeId" ColumnName="TimeFormatTypeId" />
+                <ScalarProperty Name="TimeZoneTypeId" ColumnName="TimeZoneTypeId" />
+                <ScalarProperty Name="StartOfWeekTypeId" ColumnName="StartOfWeekTypeId" />
+                <ScalarProperty Name="DailyDigestTypeId" ColumnName="DailyDigestTypeId" />
+                <ScalarProperty Name="NewsLetterTypeId" ColumnName="NewsLetterTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PushNotificationSettings">
+            <EntityTypeMapping TypeName="ToDoAppStoreModel.PushNotificationSetting">
+              <MappingFragment StoreEntitySet="PushNotificationSettings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateByUserId" ColumnName="CreateByUserId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdateByUserId" ColumnName="LastUpdateByUserId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="WebNotification" ColumnName="WebNotification" />
+                <ScalarProperty Name="CommentsAttachedToMe" ColumnName="CommentsAttachedToMe" />
+                <ScalarProperty Name="TasksAssignedToMe" ColumnName="TasksAssignedToMe" />
+                <ScalarProperty Name="TasksCompleted" ColumnName="TasksCompleted" />
+                <ScalarProperty Name="TasksUncompleted" ColumnName="TasksUncompleted" />
+                <ScalarProperty Name="CollaboratorJoinedProject" ColumnName="CollaboratorJoinedProject" />
+                <ScalarProperty Name="CollaboratorDeclinedInvitationToProject" ColumnName="CollaboratorDeclinedInvitationToProject" />
+                <ScalarProperty Name="CollaboratorLeftProject" ColumnName="CollaboratorLeftProject" />
+                <ScalarProperty Name="CollaboratorRemovedFromProject" ColumnName="CollaboratorRemovedFromProject" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="ToDoAppStoreModel.Tag">
+              <MappingFragment StoreEntitySet="Tags">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateByUserId" ColumnName="CreateByUserId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdateByUserId" ColumnName="LastUpdateByUserId" />
+                <ScalarProperty Name="Tag1" ColumnName="Tag" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskCategories">
+            <EntityTypeMapping TypeName="ToDoAppStoreModel.TaskCategory">
+              <MappingFragment StoreEntitySet="TaskCategories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateByUserId" ColumnName="CreateByUserId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdateByUserId" ColumnName="LastUpdateByUserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTaskCollaborators">
+            <EntityTypeMapping TypeName="ToDoAppStoreModel.UserTaskCollaborator">
+              <MappingFragment StoreEntitySet="UserTaskCollaborators">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateByUserId" ColumnName="CreateByUserId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdateByUserId" ColumnName="LastUpdateByUserId" />
+                <ScalarProperty Name="UserTaskId" ColumnName="UserTaskId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsCreator" ColumnName="IsCreator" />
+                <ScalarProperty Name="PermissionEnumId" ColumnName="PermissionEnumId" />
+                <ScalarProperty Name="LastActionDate" ColumnName="LastActionDate" />
+                <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+                <ScalarProperty Name="DeleteByUserId" ColumnName="DeleteByUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTaskComments">
+            <EntityTypeMapping TypeName="ToDoAppStoreModel.UserTaskComment">
+              <MappingFragment StoreEntitySet="UserTaskComments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateByUserId" ColumnName="CreateByUserId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdateByUserId" ColumnName="LastUpdateByUserId" />
+                <ScalarProperty Name="UserTaskId" ColumnName="UserTaskId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="RootUserTaskCommentId" ColumnName="RootUserTaskCommentId" />
+                <ScalarProperty Name="MediaFileId" ColumnName="MediaFileId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTaskInTags">
+            <EntityTypeMapping TypeName="ToDoAppStoreModel.UserTaskInTag">
+              <MappingFragment StoreEntitySet="UserTaskInTags">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateByUserId" ColumnName="CreateByUserId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdateByUserId" ColumnName="LastUpdateByUserId" />
+                <ScalarProperty Name="UserTaskId" ColumnName="UserTaskId" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTasks">
+            <EntityTypeMapping TypeName="ToDoAppStoreModel.UserTask">
+              <MappingFragment StoreEntitySet="UserTasks">
+                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateByUserId" ColumnName="CreateByUserId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdateByUserId" ColumnName="LastUpdateByUserId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="TitleHashCode" ColumnName="TitleHashCode" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="TaskEnumStatusId" ColumnName="TaskEnumStatusId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="PriorityEnumId" ColumnName="PriorityEnumId" />
+                <ScalarProperty Name="TaskCategoryId" ColumnName="TaskCategoryId" />
+                <ScalarProperty Name="MediaFileId" ColumnName="MediaFileId" />
+                <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ApplicationUserRoles" TypeName="ToDoAppStoreModel.ApplicationUserRoles" StoreEntitySet="ApplicationUserRoles">
+            <EndProperty Name="ApplicationRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="ApplicationUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

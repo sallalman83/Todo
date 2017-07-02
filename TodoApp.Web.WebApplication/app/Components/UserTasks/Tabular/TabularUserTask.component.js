@@ -8,7 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
 var user_task_service_1 = require("../../../services/UserTask/user.task.service");
 var TabularUserTaskComponent = (function () {
     function TabularUserTaskComponent(tasksService) {
@@ -35,15 +36,15 @@ var TabularUserTaskComponent = (function () {
     TabularUserTaskComponent.prototype.editUserTask = function (userTaskViewModel) {
         alert(userTaskViewModel.Id);
     };
-    TabularUserTaskComponent = __decorate([
-        core_1.Component({
-            selector: 'tabular-tasks',
-            templateUrl: '../app/Components/UserTasks/Tabular/TabularUserTask.component.html',
-            providers: [user_task_service_1.TasksService]
-        }), 
-        __metadata('design:paramtypes', [user_task_service_1.TasksService])
-    ], TabularUserTaskComponent);
     return TabularUserTaskComponent;
 }());
+TabularUserTaskComponent = __decorate([
+    core_1.Component({
+        selector: 'tabular-tasks',
+        templateUrl: '../app/Components/UserTasks/Tabular/TabularUserTask.component.html',
+        providers: [user_task_service_1.TasksService]
+    }),
+    __metadata("design:paramtypes", [user_task_service_1.TasksService])
+], TabularUserTaskComponent);
 exports.TabularUserTaskComponent = TabularUserTaskComponent;
 //# sourceMappingURL=TabularUserTask.component.js.map
